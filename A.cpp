@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
       
       //Check to make sure event is still waiting for L1 processing
       char *ID = label(event_id_to_process);
-      d = l1_shm->find<SerializedEvent>(ID);
+      d = l1_shm.find<SerializedEvent>(ID);
       if( !*d.first ) continue;
 
       while( !toCheckQ->try_send(ev, sizeof(EventID), priority) ){
